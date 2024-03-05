@@ -1,2 +1,2 @@
-# EKS-ALB
-This is a repository contains terraform code for eks deployment and had alb ingress controller.
+# EKS
+This is a repository contains terraform code for private eks deployment.

@@ -26,5 +26,5 @@ repository_names     = ["repo-dev", "repo-prod"]
 image_tag_mutability = "MUTABLE"
 
 #RBAC
-iam_user_arn         = "arn:aws:iam::039033235676:user/sanjay.pramod@urolime.com"
-iam_user_name        = "sanjay.pramod@urolime.com"
+iam_user_arn         = "arn:aws:iam::1234567890:user/abc@xyz.com"
+iam_user_name        = "abc@xyz.com"

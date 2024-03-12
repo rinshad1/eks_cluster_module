@@ -17,10 +17,10 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
-- task: InfracostSetup@2
-  inputs:
-    apiKey: 'ico-0LLqDR3ojP26GDGA1ShYcCTOEMiOHrrk'
-    version: '0.10.x'
+# - task: InfracostSetup@2
+#   inputs:
+#     apiKey: 'ico-0LLqDR3ojP26GDGA1ShYcCTOEMiOHrrk'
+#     version: '0.10.x'
 
 - bash: |
     git clone $(Build.Repository.Uri) --branch=main --single-branch /tmp/base

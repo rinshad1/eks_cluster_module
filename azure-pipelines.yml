@@ -36,7 +36,7 @@ steps:
       --out-file=/tmp/infracost-base.json
   displayName: Generate Infracost cost estimate baseline
 
-# Generate an Infracost diff and save it to a JSON file.
+# Generate an Infracost diff and save it to a JSON file..
 - bash: |
     cd -
     infracost diff --path=. \

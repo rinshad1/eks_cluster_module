@@ -1,0 +1,56 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
+- task: InfracostSetup@2
+  inputs:
+    apiKey: 'ico-0LLqDR3ojP26GDGA1ShYcCTOEMiOHrrk'
+    version: '0.10.x'
+
+- bash: |
+    git clone $(Build.Repository.Uri) --branch=main --single-branch /tmp/base
+  displayName: Checkout base branch
+
+# Generate an Infracost cost estimate baseline from the comparison branch, so that Infracost can compare the cost difference.
+- bash: |
+    ls
+    pwd
+    # cd /tmp/base
+    infracost breakdown --path=. \
+      --format=json \
+      --out-file=/tmp/infracost-base.json
+  displayName: Generate Infracost cost estimate baseline
+
+# Generate an Infracost diff and save it to a JSON file.
+- bash: |
+    cd -
+    infracost diff --path=. \
+      --format=json \
+      --compare-to=/tmp/infracost-base.json \
+      --out-file=/tmp/infracost.json
+  displayName: Generate Infracost diff
+
+# Add a cost estimate comment to a Azure Repos pull request.
+- bash: |
+    infracost comment azure-repos \
+      --path=/tmp/infracost.json \
+      --azure-access-token=$(System.AccessToken) \
+      --pull-request=$(System.PullRequest.PullRequestId) \
+      --repo-url=$(Build.Repository.Uri) \
+      --behavior=update
+  displayName: Post PR comment

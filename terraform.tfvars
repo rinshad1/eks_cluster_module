@@ -1,6 +1,6 @@
 cluster_name            = "eks-cluster-123"
 key_pair                = "eks"
-instance_types          = ["t3.medium"]
+instance_types          = ["t3.large"]
 instance_type_BH        = "t3.micro"
 node_group_name         = "eks-cluster-123-node-group"
 public_access_cidrs     = ["0.0.0.0/0"]

@@ -31,7 +31,7 @@ steps:
     ls
     cat /tmp/infracost-base.json
     pwd
-    # cd /tmp/base
+    cd /tmp/base
     infracost breakdown --path=. \
       --format=json \
       --out-file=/tmp/infracost-base.json

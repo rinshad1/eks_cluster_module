@@ -45,12 +45,12 @@ steps:
       # --out-file=/tmp/infracost.json
   displayName: Generate Infracost diff
 
-# Add a cost estimate comment to a Azure Repos pull request.
-- bash: |
-    infracost comment azure-repos \
-      --path=/tmp/infracost.json \
-      --azure-access-token=$(System.AccessToken) \
-      --pull-request=$(System.PullRequest.PullRequestId) \
-      --repo-url=$(Build.Repository.Uri) \
-      --behavior=update
-  displayName: Post PR comment
+# # Add a cost estimate comment to a Azure Repos pull request.
+# - bash: |
+#     infracost comment azure-repos \
+#       --path=/tmp/infracost.json \
+#       --azure-access-token=$(System.AccessToken) \
+#       --pull-request=$(System.PullRequest.PullRequestId) \
+#       --repo-url=$(Build.Repository.Uri) \
+#       --behavior=update
+#   displayName: Post PR comment

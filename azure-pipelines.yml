@@ -61,7 +61,7 @@ jobs:
     - bash: |
         infracost comment github \
           --path=/tmp/infracost-base.json \
-          --github-token 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 \
+          --github-token=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 \
           --pull-request=$(System.PullRequest.PullRequestId) \
           --repo=$(Build.Repository.Uri) \
           --behavior=update

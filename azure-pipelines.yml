@@ -29,6 +29,7 @@ steps:
 # Generate an Infracost cost estimate baseline from the comparison branch, so that Infracost can compare the cost difference.
 - bash: |
     ls
+    cat /tmp/infracost-base.json
     pwd
     # cd /tmp/base
     infracost breakdown --path=. \

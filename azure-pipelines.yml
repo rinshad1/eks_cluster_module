@@ -50,7 +50,7 @@ jobs:
     - bash: |
         cd -
         pwd
-        infracost diff --path . --compare-to /tmp/infracost-base.json
+        infracost diff --path . --compare-to /tmp/infracost-base.json --out-file=/tmp/infracost.json
         # infracost diff --path=. \
         #   --format=json \
         #   --compare-to=/tmp/infracost-base.json \
@@ -60,7 +60,7 @@ jobs:
     # Add a cost estimate comment to a Azure Repos pull request.
     - bash: |
         infracost comment github \
-          --path=/tmp/infracost-base.json \
+          --path=/tmp/infracost.json \
           --pull-request=$(System.PullRequest.PullRequestId) \
           --repo=$(Build.Repository.Uri) \
           --github-token="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" \

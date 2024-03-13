@@ -39,10 +39,11 @@ steps:
 # Generate an Infracost diff and save it to a JSON file..
 - bash: |
     cd -
-    infracost diff --path=. \
-      --format=json \
-      --compare-to=/tmp/infracost-base.json \
-      # --out-file=/tmp/infracost.json
+    
+    # infracost diff --path=. \
+    #   --format=json \
+    #   --compare-to=/tmp/infracost-base.json \
+    #   --out-file=/tmp/infracost.json
   displayName: Generate Infracost diff
 
 # # Add a cost estimate comment to a Azure Repos pull request.

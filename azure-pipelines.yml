@@ -40,7 +40,7 @@ steps:
 - bash: |
     cd -
     infracost diff --path=. \
-      # --format=json \
+      --format=json \
       --compare-to=/tmp/infracost-base.json \
       # --out-file=/tmp/infracost.json
   displayName: Generate Infracost diff

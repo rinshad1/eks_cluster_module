@@ -57,7 +57,7 @@ jobs:
         #   --out-file=/tmp/infracost.json
       displayName: Generate Infracost diff
 
-    # Add a cost estimate comment to a Azure Repos pull request.
+    # Add a cost estimate comment to a Azure Repos pull request..
     - bash: |
         infracost comment github \
           --path=/tmp/infracost-base.json \

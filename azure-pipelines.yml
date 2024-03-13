@@ -39,7 +39,7 @@ steps:
 # Generate an Infracost diff and save it to a JSON file..
 - bash: |
     cd -
-    
+    infracost diff --path . --compare-to /tmp/infracost-base.json
     # infracost diff --path=. \
     #   --format=json \
     #   --compare-to=/tmp/infracost-base.json \

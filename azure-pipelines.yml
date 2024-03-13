@@ -14,9 +14,9 @@ jobs:
     displayName: Run Infracost on pull requests
     pool:
       vmImage: ubuntu-latest
-      permissions:
-        contents: read
-        pull-requests: write  
+      # permissions:
+      #   contents: read
+      #   pull-requests: write  
 
     steps:
     - script: echo Hello, world!

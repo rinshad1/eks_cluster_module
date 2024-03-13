@@ -31,7 +31,7 @@ jobs:
     - task: InfracostSetup@2
       inputs:
         apiKey: 'ico-0LLqDR3ojP26GDGA1ShYcCTOEMiOHrrk'
-        version: '0.10.x'
+        version: '0.10.34'
 
     - bash: |
         git clone $(Build.Repository.Uri) --branch=main --single-branch /tmp/base
@@ -66,7 +66,7 @@ jobs:
         echo commitid=$BUILD_SOURCEVERSION
         infracost comment github \
           --path=/tmp/infracost-base.json \
-          --pull-request=24 \ #$(System.PullRequest.PullRequestId) \
+          --pull-request=$(System.PullRequest.PullRequestId) \
           --repo=$(Build.Repository.Uri) \
           --github-token=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 \
           --behavior=update

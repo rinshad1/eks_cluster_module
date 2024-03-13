@@ -59,6 +59,9 @@ jobs:
 
     # Add a cost estimate comment to a Azure Repos pull request..
     - bash: |
+        echo prnmbr=$(System.PullRequest.PullRequestId)
+        echo repo=$(Build.Repository.Uri)
+        echo commitid=$BUILD_SOURCEVERSION
         infracost comment github \
           --path=/tmp/infracost-base.json \
           --pull-request=$(System.PullRequest.PullRequestId) \

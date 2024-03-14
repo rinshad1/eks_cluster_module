@@ -19,17 +19,9 @@ jobs:
       #   pull-requests: write  
 
     steps:
-    - script: echo Hello, world!
-      displayName: 'Run a one-line script'
-    - checkout: self
-      persistCredentials: true
-
-    - script: |
-        echo Add other tasks to build, test, and deploy your project.
-        echo See https://aka.ms/yaml
-      displayName: 'Run a multi-line script'
     - task: InfracostSetup@2
       inputs:
+        serviceConnection: 'githubPR'
         apiKey: 'ico-0LLqDR3ojP26GDGA1ShYcCTOEMiOHrrk'
         version: '0.10.34'
 
@@ -71,7 +63,7 @@ jobs:
           --path=/tmp/infracost-base.json \
           --pull-request=$(System.PullRequest.PullRequestNumber) \
           --repo=$(Build.Repository.Uri) \
-          --github-service-connection=githubPR \
+          # --github-service-connection=githubPR \
           --github-token=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 \
           --behavior=update --log-level=debug
       displayName: Post PR comment

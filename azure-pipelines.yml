@@ -71,6 +71,6 @@ jobs:
           --path=/tmp/infracost-base.json \
           --pull-request=$(System.PullRequest.PullRequestNumber) \
           --repo=$(Build.Repository.Uri) \
-          --github-token=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 \
+          --github-token=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 \
           --behavior=update --log-level=debug
       displayName: Post PR comment

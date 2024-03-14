@@ -58,6 +58,7 @@ jobs:
         echo prnmbr=$(System.PullRequest.PullRequestNumber)
         # echo repo=$(Build.Repository.Uri)
         # echo commitid=$BUILD_SOURCEVERSION
+        git config --global user.email "myemail@someOrganization.com" && git config --global user.name "John Doe"
         ls /tmp
         infracost comment github \
           --path=/tmp/infracost-base.json \

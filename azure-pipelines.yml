@@ -72,5 +72,5 @@ jobs:
           --pull-request=$(System.PullRequest.PullRequestNumber) \
           --repo=$(Build.Repository.Uri) \
           --github-token=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 \
-          --behavior=update
+          --behavior=update --log-level=debug
       displayName: Post PR comment

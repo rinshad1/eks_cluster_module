@@ -67,7 +67,7 @@ jobs:
         # echo commitid=$BUILD_SOURCEVERSION
         ls /tmp
         infracost comment github \
-          --path=/tmp/infracost.json \
+          --path=/tmp/infracost-base.json \
           --pull-request=$(System.PullRequest.PullRequestId) \
           --repo=$(Build.Repository.Uri) \
           --github-token=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 \

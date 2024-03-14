@@ -62,7 +62,8 @@ jobs:
     
     # Add a cost estimate comment to a Azure Repos pull request..
     - bash: |
-        # echo prnmbr=$(System.PullRequest.PullRequestId)
+        echo prnmbr=$(System.PullRequest.PullRequestId)
+        echo prnmbr=$(System.PullRequest.PullRequestNumber)
         # echo repo=$(Build.Repository.Uri)
         # echo commitid=$BUILD_SOURCEVERSION
         ls /tmp

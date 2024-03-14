@@ -52,7 +52,7 @@ jobs:
     - bash: |
         cd -
         pwd
-        infracost diff --path . --compare-to /tmp/infracost-base.json --out-file=/tmp/infracost.json
+        infracost diff --path . --compare-to /tmp/infracost-base.json --out-file /tmp/infracost.json
         # infracost diff --path=. \
         #   --format=json \
         #   --compare-to=/tmp/infracost-base.json \

@@ -57,6 +57,7 @@ jobs:
         #   --format=json \
         #   --compare-to=/tmp/infracost-base.json \
         #   --out-file=/tmp/infracost.json
+        ls /tmp
       displayName: Generate Infracost diff
     
     # Add a cost estimate comment to a Azure Repos pull request..
@@ -64,6 +65,7 @@ jobs:
         # echo prnmbr=$(System.PullRequest.PullRequestId)
         # echo repo=$(Build.Repository.Uri)
         # echo commitid=$BUILD_SOURCEVERSION
+        ls /tmp
         infracost comment github \
           --path=/tmp/infracost.json \
           --pull-request=$(System.PullRequest.PullRequestId) \

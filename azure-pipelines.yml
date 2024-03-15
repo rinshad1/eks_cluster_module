@@ -65,7 +65,7 @@ jobs:
           --pull-request=$(System.PullRequest.PullRequestNumber) \
           --repo=$(Build.Repository.Uri) \
           --github-token=$(GitHubServiceConnection.Token) \
-          --behavior=update --log-level=debug
+          --behavior=update
       displayName: Post PR comment
       env:
         GitHubServiceConnection: 'githubPR'

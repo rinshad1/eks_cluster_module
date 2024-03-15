@@ -14,7 +14,7 @@ jobs:
     displayName: Run Infracost on pull requests
     pool:
       vmImage: ubuntu-latest
-      # permissions:
+      permissions:
       #   contents: read
       #   pull-requests: write  
 
@@ -26,6 +26,7 @@ jobs:
         version: '0.10.34'
 
     - bash: |
+        echo TESTTTTT===== $(System.PullRequest.TargetBranchName)
         git clone $(Build.Repository.Uri) --branch=main --single-branch /tmp/base
       displayName: Checkout base branch
 

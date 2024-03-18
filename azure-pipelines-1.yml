@@ -18,7 +18,7 @@ steps:
     # git clone https://github.com/rinshad1/eks_cluster_module.git
     ls
     cd eks_cluster_module
-    echo "service connection : $(GitHubServiceConnection.Token)"
+    echo $(GitHubServiceConnection.Token)
     ls
     # Make changes to files 
     echo " \ This Is Build $(Build.BuildId)" >> README.md

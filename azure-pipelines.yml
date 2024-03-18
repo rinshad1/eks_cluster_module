@@ -45,7 +45,7 @@ jobs:
       displayName: Generate Infracost cost estimate baseline
 
     # Generate an Infracost diff and save it to a JSON file..
-    - script: |
+    - bash: |
         cd -
         pwd
         infracost diff --path . --compare-to /tmp/infracost-base.json --out-file /tmp/infracost.json

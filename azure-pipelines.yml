@@ -69,4 +69,4 @@ jobs:
           --behavior=update
       displayName: Post PR comment
       env:
-        GitHubServiceConnection: 'githubPR'
+        GitHubServiceConnection: 'github.com_rinshad1'

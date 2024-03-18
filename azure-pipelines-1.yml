@@ -27,4 +27,4 @@ steps:
     git push origin main
   displayName: 'Commit and Push to GitHub'
   env:
-    GitHubServiceConnection: 'github.com_rinshad1'
+    GitHubServiceConnection: 'githubPR'

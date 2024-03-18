@@ -34,7 +34,7 @@ jobs:
       displayName: Checkout base branch
 
     # Generate an Infracost cost estimate baseline from the comparison branch, so that Infracost can compare the cost difference.
-    - script: 
+    - bash: 
         ls
         cat /tmp/infracost-base.json
         pwd

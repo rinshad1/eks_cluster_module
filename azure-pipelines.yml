@@ -39,7 +39,7 @@ jobs:
         cat /tmp/infracost-base.json
         pwd
         cd /tmp/base
-        infracost breakdown --path=. \
+        infracost breakdown --path . \
           --format=json \
           --out-file=/tmp/infracost-base.json
       displayName: Generate Infracost cost estimate baseline
@@ -48,7 +48,7 @@ jobs:
     - bash: |
         cd -
         pwd
-        infracost diff --path=. --compare-to /tmp/infracost-base.json --out-file /tmp/infracost.json
+        infracost diff --path . --compare-to /tmp/infracost-base.json --out-file /tmp/infracost.json
         # infracost diff --path=. \
         #   --format=json \
         #   --compare-to=/tmp/infracost-base.json \

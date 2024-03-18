@@ -14,7 +14,7 @@ steps:
     ls
     # Make changes to files 
     echo "This Is Build $(Build.BuildId)" >> README.md
-
+    cat README.md
     git add .
     git commit -m "Commit message from azure pipeline"
     git push

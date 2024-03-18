@@ -5,6 +5,9 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+- checkout: self
+  persistCredentials: true
+  fetchDepth: 0
 - script: |
     git config --global user.email "you@example.com"
     git config --global user.name "Your Name"

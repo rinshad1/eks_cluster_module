@@ -19,19 +19,22 @@ jobs:
       #   pull-requests: write  
 
     steps:
+    - checkout: self
+      persistCredentials: true
+      fetchDepth: 0
     - task: InfracostSetup@2
       inputs:
-        serviceConnection: 'githubPR'
+        # serviceConnection: 'githubPR'
         apiKey: 'ico-0LLqDR3ojP26GDGA1ShYcCTOEMiOHrrk'
         version: '0.10.34'
 
-    - bash: |
+    - script: |
         echo TESTTTTT===== $(System.PullRequest.TargetBranchName)
         git clone $(Build.Repository.Uri) --branch=main --single-branch /tmp/base
       displayName: Checkout base branch
 
     # Generate an Infracost cost estimate baseline from the comparison branch, so that Infracost can compare the cost difference.
-    - bash: |
+    - script: 
         ls
         cat /tmp/infracost-base.json
         pwd
@@ -42,7 +45,7 @@ jobs:
       displayName: Generate Infracost cost estimate baseline
 
     # Generate an Infracost diff and save it to a JSON file..
-    - bash: |
+    - script: |
         cd -
         pwd
         infracost diff --path . --compare-to /tmp/infracost-base.json --out-file /tmp/infracost.json
@@ -54,7 +57,7 @@ jobs:
       displayName: Generate Infracost diff
     
     # Add a cost estimate comment to a Azure Repos pull request..
-    - bash: |
+    - script: |
         echo prnmbr=$(System.PullRequest.PullRequestId)
         echo prnmbr=$(System.PullRequest.PullRequestNumber)
         # echo repo=$(Build.Repository.Uri)

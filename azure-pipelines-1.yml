@@ -17,5 +17,5 @@ steps:
     cat README.md
     git add .
     git commit -m "Commit message from azure pipeline"
-    git push
+    git push origin main
   displayName: 'Commit and Push to GitHub'

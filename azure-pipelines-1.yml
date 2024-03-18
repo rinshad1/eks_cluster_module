@@ -1,0 +1,19 @@
+trigger:
+- main  # Change this to your branch name
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: |
+    git config --global user.email "you@example.com"
+    git config --global user.name "Your Name"
+    git clone https://github.com/rinshad1/eks_cluster_module.git
+    cd eks_cluster_module
+    # Make changes to files 
+    echo "This Is Build $(Build.BuildId)" >> README.md
+
+    git add .
+    git commit -m "Commit message from azure pipeline"
+    git push
+  displayName: 'Commit and Push to GitHub'

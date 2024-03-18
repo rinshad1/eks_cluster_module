@@ -53,20 +53,20 @@ jobs:
         ls /tmp
       displayName: Generate Infracost diff
     
-    # # Add a cost estimate comment to a Azure Repos pull request..
-    # - bash: |
-    #     echo prnmbr=$(System.PullRequest.PullRequestId)
-    #     echo prnmbr=$(System.PullRequest.PullRequestNumber)
-    #     # echo repo=$(Build.Repository.Uri)
-    #     # echo commitid=$BUILD_SOURCEVERSION
-    #     git config --global user.email "myemail@someOrganization.com" && git config --global user.name "John Doe"
-    #     ls /tmp
-    #     infracost comment github \
-    #       --path=/tmp/infracost-base.json \
-    #       --pull-request=$(System.PullRequest.PullRequestNumber) \
-    #       --repo=$(Build.Repository.Uri) \
-    #       --github-token=$(GitHubServiceConnection.Token) \
-    #       --behavior=update
-    #   displayName: Post PR comment
-    #   env:
-    #     GitHubServiceConnection: 'githubPR'
+    # Add a cost estimate comment to a Azure Repos pull request..
+    - bash: |
+        echo prnmbr=$(System.PullRequest.PullRequestId)
+        echo prnmbr=$(System.PullRequest.PullRequestNumber)
+        # echo repo=$(Build.Repository.Uri)
+        # echo commitid=$BUILD_SOURCEVERSION
+        git config --global user.email "myemail@someOrganization.com" && git config --global user.name "John Doe"
+        ls /tmp
+        infracost comment github \
+          --path=/tmp/infracost-base.json \
+          --pull-request=$(System.PullRequest.PullRequestNumber) \
+          --repo=$(Build.Repository.Uri) \
+          --github-token=$(GitHubServiceConnection.Token) \
+          --behavior=update
+      displayName: Post PR comment
+      env:
+        GitHubServiceConnection: 'githubPR'

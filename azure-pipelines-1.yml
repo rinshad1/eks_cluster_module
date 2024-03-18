@@ -13,8 +13,8 @@ steps:
     git config --global user.name "Your Name"
     # git remote set-url origin https://github.com/rinshad1/eks_cluster_module.git
     # git fetch
-    git config --global credential.helper "!f() { echo "username=`rinshad1`npassword=`12345`"; }; f"
-    git checkout $(Build.SourceBranchName)
+    # git config --global credential.helper "!f() { echo "username=`rinshad1`npassword=`12345`"; }; f"
+    # git checkout $(Build.SourceBranchName)
     # git clone https://github.com/rinshad1/eks_cluster_module.git
     ls
     cd eks_cluster_module

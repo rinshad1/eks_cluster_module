@@ -20,11 +20,11 @@ steps:
     cd eks_cluster_module
     ls
     # Make changes to files 
-    echo "This Is Build $(Build.BuildId)" >> README.md
+    echo " \ This Is Build $(Build.BuildId)" >> README.md
     cat README.md
     git add .
     git commit -m "Commit message from azure pipeline"
     git push origin main
   displayName: 'Commit and Push to GitHub'
-  env:
-    GitHubServiceConnection: 'githubPR'
+  # env:
+  #   GitHubServiceConnection: 'githubPR'

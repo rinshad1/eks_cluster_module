@@ -9,8 +9,8 @@ steps:
   persistCredentials: true
   fetchDepth: 0
 - script: |
-    # git config --global user.email "you@example.com"
-    # git config --global user.name "Your Name"
+    git config --global user.email "you@example.com"
+    git config --global user.name "Your Name"
     # git remote set-url origin https://github.com/rinshad1/eks_cluster_module.git
     # git fetch
     git config --global credential.helper "!f() { echo "username=`rinshad1`npassword=`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`"; }; f"

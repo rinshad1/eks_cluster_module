@@ -13,7 +13,7 @@ steps:
     git config --global user.name "Your Name"
     # git remote set-url origin https://github.com/rinshad1/eks_cluster_module.git
     # git fetch
-    git config --global credential.helper "!f() { echo "username=`rinshad1`npassword=`$(GitHubServiceConnection.Token)`"; }; f"
+    git config --global credential.helper "!f() { echo "username=`rinshad1`npassword=`12345`"; }; f"
     git checkout $(Build.SourceBranchName)
     # git clone https://github.com/rinshad1/eks_cluster_module.git
     ls
@@ -21,7 +21,8 @@ steps:
     echo $(GitHubServiceConnection.Token)
     ls
     # Make changes to files 
-    echo " \ This Is Build $(Build.BuildId)" >> README.md
+    echo \ 
+      " This Is Build $(Build.BuildId)" >> README.md
     cat README.md
     git add .
     git commit -m "Commit message from azure pipeline"

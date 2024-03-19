@@ -89,3 +89,5 @@ jobs:
         gitHubConnection: 'github.com_rinshad1'
         repositoryName: '$(Build.Repository.Name)'
         comment: $commentfile
+      env:
+        commentfile: $(cat="/tmp/infracost-base.json")

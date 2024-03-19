@@ -90,4 +90,4 @@ jobs:
         repositoryName: '$(Build.Repository.Name)'
         comment: $commentfile
       env:
-        commentfile: $(cat="/tmp/infracost-base.json")
+        commentfile: hello

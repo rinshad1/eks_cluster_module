@@ -90,10 +90,10 @@ jobs:
       
 
 
-    # - task: GitHubComment@0
-    #   inputs:
-    #     gitHubConnection: 'github.com_rinshad1'
-    #     repositoryName: '$(Build.Repository.Name)'
-    #     comment: test
-    #   env:
-    #     commentfile: hello
+    - task: GitHubComment@0
+      inputs:
+        gitHubConnection: 'github.com_rinshad1'
+        repositoryName: '$(Build.Repository.Name)'
+        comment: echo $COST
+      # env:
+      #   commentfile: hello

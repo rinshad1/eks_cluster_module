@@ -115,6 +115,6 @@ jobs:
       inputs:
         gitHubConnection: 'github.com_rinshad1'
         repositoryName: '$(Build.Repository.Name)'
-        commentFile: '$(COMMENT_FILE)'
+        comment: '$(COMMENT_FILE)'
 
 

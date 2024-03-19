@@ -48,7 +48,7 @@ jobs:
     - bash: |
         cd -
         pwd
-        infracost diff --path . --compare-to /tmp/infracost-base.json > /tmp/infracost.json
+        infracost diff --path . --compare-to /tmp/infracost-base.json --out-file /tmp/infracost.json
         # infracost diff --path=. \
         #   --format=json \
         #   --compare-to=/tmp/infracost-base.json \
@@ -70,30 +70,35 @@ jobs:
     #       --repo=$(Build.Repository.Uri) \
     #       --github-token=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 \
     #       --behavior=update
+    - task: PowerShell@2
+      inputs:
+        targetType: 'inline'
+        script: 'infracost comment github --path=/tmp/infracost.json   --pull-request=$(System.PullRequest.PullRequestNumber) --repo=$(Build.Repository.Uri)  --github-token=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   --behavior=update'
     #   displayName: Post PR comment
       # env:
       #   GitHubServiceConnection: 'github.com_rinshad1'
 
-    - bash: |
-        ls /tmp
-        echo ${print}
-        export COST=$(cat /tmp/infracost.json)
-        echo $COST
+    # - bash: |
+    #     ls /tmp
+    #     echo ${print}
+    #     export COST=$(cat /tmp/infracost.json)
+    #     echo $COST
 
-        # commentfile = $(cat="/tmp/infracost-base.json")
-        # body=$(cat $comment_file)
-        # endpoint="https://api.github.com/repos/$(Build.Repository.Name)/issues/$(System.PullRequest.PullRequestId)/comments"
-        # curl -X POST -H "Authorization: token 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" -d "{\"body\": \"$body\"}" $endpoint
-      displayName: 'Post Comment from File in GitHub PR'
-      env: 
-        print: $(cat /tmp/infracost.json)
+    #     # commentfile = $(cat="/tmp/infracost-base.json")
+    #     # body=$(cat $comment_file)
+    #     # endpoint="https://api.github.com/repos/$(Build.Repository.Name)/issues/$(System.PullRequest.PullRequestId)/comments"
+    #     # curl -X POST -H "Authorization: token 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" -d "{\"body\": \"$body\"}" $endpoint
+    #   displayName: 'Post Comment from File in GitHub PR'
+    #   env: 
+    #     print: $(cat /tmp/infracost.json)
       
+    
 
-
-    - task: GitHubComment@0
-      inputs:
-        gitHubConnection: 'github.com_rinshad1'
-        repositoryName: '$(Build.Repository.Name)'
-        comment: echo $COST
-      # env:
-      #   commentfile: hello
+    # - task: GitHubComment@0
+    #   inputs:
+    #     gitHubConnection: 'github.com_rinshad1'
+    #     repositoryName: '$(Build.Repository.Name)'
+        
+    #     comment: echo $COST
+    #   # env:
+    #   #   commentfile: hello

@@ -76,7 +76,7 @@ jobs:
 
     - bash: |
         ls /tmp
-        cat ${print}
+        echo ${print}
 
         # commentfile = $(cat="/tmp/infracost-base.json")
         # body=$(cat $comment_file)
@@ -84,7 +84,7 @@ jobs:
         # curl -X POST -H "Authorization: token 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" -d "{\"body\": \"$body\"}" $endpoint
       displayName: 'Post Comment from File in GitHub PR'
       env: 
-        print: /tmp/infracost.json
+        print: cat /tmp/infracost.json
       
 
 

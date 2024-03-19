@@ -109,10 +109,7 @@ jobs:
         echo "##vso[task.setvariable variable=COST;isOutput=true]$COST"
       displayName: 'Read and Output Infracost Content'
 
-    - task: GitHubComment@0
-      inputs:
-        gitHubConnection: 'github.com_rinshad1'
-        repositoryName: '$(Build.Repository.Name)'
-        comment: |
-          The content of infracost.json is:
-          $(COST)
+    - bash: |
+        # Use the COST variable to construct the GitHub comment command
+        echo "##[command]GitHubComment post $(COST)"
+      displayName: 'Post Comment from File in GitHub PR'

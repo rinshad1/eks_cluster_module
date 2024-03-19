@@ -95,6 +95,6 @@ jobs:
         gitHubConnection: 'github.com_rinshad1'
         repositoryName: '$(Build.Repository.Name)'
         
-        comment: 'echo $COST'
+        comment: '$(cat /tmp/infracost.json)'
     #   # env:
     #   #   commentfile: hello

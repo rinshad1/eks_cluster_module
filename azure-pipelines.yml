@@ -104,17 +104,21 @@ jobs:
     - bash: |
         # Read the content of infracost.json into a variable
         COST=$(cat /tmp/infracost.json)
-        # Write the content to a temporary file
-        echo "$COST" > /tmp/comment.txt
-        echo "The content of infracost.json is: $COST"
-        # Set the path to the temporary file as an environment variable for use in subsequent tasks
-        echo "##vso[task.setvariable variable=COMMENT_FILE;isOutput=true]/tmp/comment.txt"
-      displayName: 'Read and Output Infracost Content'
+        # Set the content as an environment variable for use in subsequent tasks
+        echo "##vso[task.setvariable variable=COMMENT_CONTENT;isOutput=true]$COST"
+      displayName: 'Read Infracost Content'
+
+    - task: PowerShell@2
+      inputs:
+        targetType: 'inline'
+        script: |
+          Write-Host "##vso[task.setvariable variable=COMMENT_CONTENT;isOutput=true]$(cat /tmp/infracost.json)"
 
     - task: GitHubComment@0
       inputs:
         gitHubConnection: 'github.com_rinshad1'
         repositoryName: '$(Build.Repository.Name)'
-        comment: '$(COMMENT_FILE)'
+        comment: '$(COMMENT_CONTENT)'
+
 
 

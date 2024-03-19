@@ -76,7 +76,7 @@ jobs:
 
     - bash: |
         ls /tmp
-        echo ${print}
+        # echo ${print}
         export COST=$(cat /tmp/infracost.json)
         echo $COST
 
@@ -95,6 +95,6 @@ jobs:
         gitHubConnection: 'github.com_rinshad1'
         repositoryName: '$(Build.Repository.Name)'
         
-        comment: echo $COST
+        comment: 'echo $COST'
     #   # env:
     #   #   commentfile: hello

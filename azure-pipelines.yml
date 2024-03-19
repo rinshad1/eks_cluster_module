@@ -110,6 +110,9 @@ jobs:
       displayName: 'Read and Output Infracost Content'
 
     - bash: |
+        # Get the COST variable value
+        COST=$(echo $(COST))
         # Use the COST variable to construct the GitHub comment command
-        echo "##[command]GitHubComment post $(COST)"
+        echo "##[command]GitHubComment post $COST"
       displayName: 'Post Comment from File in GitHub PR'
+

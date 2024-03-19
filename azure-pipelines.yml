@@ -78,7 +78,7 @@ jobs:
         ls /tmp
         echo ${print}
         export COST=$(cat /tmp/infracost.json)
-        echo $(COST)
+        echo $COST
 
         # commentfile = $(cat="/tmp/infracost-base.json")
         # body=$(cat $comment_file)

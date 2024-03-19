@@ -68,8 +68,8 @@ jobs:
           --path=/tmp/infracost-base.json \
           --pull-request=$(System.PullRequest.PullRequestNumber) \
           --repo=$(Build.Repository.Uri) \
-          --github-token=$(GitHubServiceConnection.Token) \
+          --github-token=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 \
           --behavior=update
       displayName: Post PR comment
-      env:
-        GitHubServiceConnection: 'github.com_rinshad1'
+      # env:
+      #   GitHubServiceConnection: 'github.com_rinshad1'

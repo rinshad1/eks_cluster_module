@@ -74,13 +74,13 @@ jobs:
       # env:
       #   GitHubServiceConnection: 'github.com_rinshad1'
 
-    - bash: |
-        cat="/tmp/infracost-base.json"
-        commentfile = $(cat="/tmp/infracost-base.json")
-        # body=$(cat $comment_file)
-        # endpoint="https://api.github.com/repos/$(Build.Repository.Name)/issues/$(System.PullRequest.PullRequestId)/comments"
-        # curl -X POST -H "Authorization: token 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" -d "{\"body\": \"$body\"}" $endpoint
-      displayName: 'Post Comment from File in GitHub PR'
+    # - bash: |
+    #     cat="/tmp/infracost-base.json"
+    #     commentfile = $(cat="/tmp/infracost-base.json")
+    #     # body=$(cat $comment_file)
+    #     # endpoint="https://api.github.com/repos/$(Build.Repository.Name)/issues/$(System.PullRequest.PullRequestId)/comments"
+    #     # curl -X POST -H "Authorization: token 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" -d "{\"body\": \"$body\"}" $endpoint
+    #   displayName: 'Post Comment from File in GitHub PR'
       
 
 

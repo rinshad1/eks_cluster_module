@@ -48,7 +48,7 @@ jobs:
     - bash: |
         cd -
         pwd
-        infracost diff --path . --compare-to /tmp/infracost-base.json --out-file /tmp/infracost.json
+        infracost diff --path . --compare-to /tmp/infracost-base.json > /tmp/infracost.json
         # infracost diff --path=. \
         #   --format=json \
         #   --compare-to=/tmp/infracost-base.json \
@@ -76,7 +76,7 @@ jobs:
 
     - bash: |
         ls
-        cat=/tmp/infracost-base.json
+        cat=/tmp/infracost.json
 
         # commentfile = $(cat="/tmp/infracost-base.json")
         # body=$(cat $comment_file)

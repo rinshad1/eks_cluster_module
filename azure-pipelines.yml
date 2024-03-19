@@ -74,27 +74,45 @@ jobs:
       # env:
       #   GitHubServiceConnection: 'github.com_rinshad1'
 
-    - bash: |
-        ls /tmp
-        # echo ${print}
-        export COST=$(cat /tmp/infracost.json)
-        echo $COST
+    # - bash: |
+    #     ls /tmp
+    #     # echo ${print}
+    #     export COST=$(cat /tmp/infracost.json)
+    #     echo $COST
 
-        # commentfile = $(cat="/tmp/infracost-base.json")
-        # body=$(cat $comment_file)
-        # endpoint="https://api.github.com/repos/$(Build.Repository.Name)/issues/$(System.PullRequest.PullRequestId)/comments"
-        # curl -X POST -H "Authorization: token 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" -d "{\"body\": \"$body\"}" $endpoint
-      displayName: 'Post Comment from File in GitHub PR'
-      env: 
-        print: $(cat /tmp/infracost.json)
+    #     # commentfile = $(cat="/tmp/infracost-base.json")
+    #     # body=$(cat $comment_file)
+    #     # endpoint="https://api.github.com/repos/$(Build.Repository.Name)/issues/$(System.PullRequest.PullRequestId)/comments"
+    #     # curl -X POST -H "Authorization: token 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" -d "{\"body\": \"$body\"}" $endpoint
+    #   displayName: 'Post Comment from File in GitHub PR'
+    #   env: 
+    #     print: $(cat /tmp/infracost.json)
       
     
+
+    # - task: GitHubComment@0
+    #   inputs:
+    #     gitHubConnection: 'github.com_rinshad1'
+    #     repositoryName: '$(Build.Repository.Name)'
+        
+    #     comment: '$(cat /tmp/infracost.json)'
+    #   # env:
+    #   #   commentfile: hello
+
+
+########################################
+    - bash: |
+        # Read the content of infracost.json into a variable
+        COST=$(cat /tmp/infracost.json)
+        echo "The content of infracost.json is: $COST"
+        # Set the COST variable as an environment variable for use in subsequent tasks
+        echo "##vso[task.setvariable variable=COST;isOutput=true]$COST"
+      displayName: 'Read and Output Infracost Content'
 
     - task: GitHubComment@0
       inputs:
         gitHubConnection: 'github.com_rinshad1'
         repositoryName: '$(Build.Repository.Name)'
-        
-        comment: '$(cat /tmp/infracost.json)'
-    #   # env:
-    #   #   commentfile: hello
+        comment: |
+          The content of infracost.json is:
+          $(COST)

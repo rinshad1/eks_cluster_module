@@ -84,7 +84,7 @@ jobs:
         # curl -X POST -H "Authorization: token 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" -d "{\"body\": \"$body\"}" $endpoint
       displayName: 'Post Comment from File in GitHub PR'
       env: 
-        print: $(cat /tmp/infracost.json)
+        print: $(/tmp/infracost.json)
       
 
 

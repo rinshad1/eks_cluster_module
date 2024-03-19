@@ -73,7 +73,7 @@ jobs:
     - task: PowerShell@2
       inputs:
         targetType: 'inline'
-        script: 'infracost comment github --path=/tmp/infracost.json   --pull-request=$(System.PullRequest.PullRequestNumber) --repo=$(Build.Repository.Uri)  --github-token=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   --behavior=update'
+        script: 'infracost comment github --path=/tmp/infracost-base.json   --pull-request=$(System.PullRequest.PullRequestNumber) --repo=$(Build.Repository.Uri)  --github-token=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   --behavior=update'
     #   displayName: Post PR comment
       # env:
       #   GitHubServiceConnection: 'github.com_rinshad1'

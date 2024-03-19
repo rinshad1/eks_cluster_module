@@ -104,21 +104,17 @@ jobs:
     - bash: |
         # Read the content of infracost.json into a variable
         COST=$(cat /tmp/infracost.json)
+        # Write the content to a temporary file
+        echo "$COST" > /tmp/comment.txt
         echo "The content of infracost.json is: $COST"
-        # Set the COST variable as an environment variable for use in subsequent tasks
-        echo "##vso[task.setvariable variable=COST;isOutput=true]$COST"
+        # Set the path to the temporary file as an environment variable for use in subsequent tasks
+        echo "##vso[task.setvariable variable=COMMENT_FILE;isOutput=true]/tmp/comment.txt"
       displayName: 'Read and Output Infracost Content'
-
-    - bash: |
-        # Use eval to expand the COST variable and construct the GitHub comment command
-        eval "echo \"##[command]GitHubComment post $(COST)\""
-      displayName: 'Post Comment from File in GitHub PR'
 
     - task: GitHubComment@0
       inputs:
         gitHubConnection: 'github.com_rinshad1'
         repositoryName: '$(Build.Repository.Name)'
-        comment: |
-          The content of infracost.json is:
-          $(COST)  
+        commentFile: '$(COMMENT_FILE)'
+
 

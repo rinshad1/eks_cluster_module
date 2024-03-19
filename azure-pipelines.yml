@@ -114,3 +114,11 @@ jobs:
         eval "echo \"##[command]GitHubComment post $(COST)\""
       displayName: 'Post Comment from File in GitHub PR'
 
+    - task: GitHubComment@0
+      inputs:
+        gitHubConnection: 'github.com_rinshad1'
+        repositoryName: '$(Build.Repository.Name)'
+        comment: |
+          The content of infracost.json is:
+          $(COST)  
+

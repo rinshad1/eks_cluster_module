@@ -71,7 +71,9 @@ jobs:
 
 
     - script: |
-        gh pr comment $(System.PullRequest.PullRequestNumber) -R $(Build.Repository.Uri) -b "Your 2nd comment here"
+        export COST=$(cat /tmp/infracost.json)
+        echo $COST
+        gh pr comment $(System.PullRequest.PullRequestNumber) -R $(Build.Repository.Uri) -b '$COST'
       displayName: 'Post comment on pull request'
 
 

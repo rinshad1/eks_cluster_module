@@ -88,6 +88,7 @@ jobs:
         # echo commitid=$BUILD_SOURCEVERSION
         # git config --global user.email "myemail@someOrganization.com" && git config --global user.name "John Doe"
         ls /tmp
+        echo tocken = $(GITHUBTOCKEN)
         echo $(GITHUBTOCKEN) > token
         infracost comment github \
           --path=/tmp/infracost-base.json \

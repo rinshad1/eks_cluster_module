@@ -55,6 +55,26 @@ jobs:
         #   --out-file=/tmp/infracost.json
         ls /tmp
       displayName: Generate Infracost diff
+      #################################################
+    - script: |
+        curl -sSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo gpg --dearmor -o /usr/share/keyrings/githubcli-archive-keyring.gpg
+        echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+        sudo apt-get update
+        sudo apt-get install gh
+      displayName: 'Install GitHub CLI'
+
+    - script: |
+        gh auth login 
+        #--with-token <YOUR_GITHUB_PERSONAL_ACCESS_TOKEN>
+      displayName: 'Authenticate with GitHub'
+
+    - script: |
+        gh pr comment $(System.PullRequest.PullRequestNumber) -R $(Build.Repository.Uri) -b "Your comment here"
+      displayName: 'Post comment on pull request'
+
+
+      ################################################
+
     
     # Add a cost estimate comment to a Azure Repos pull request..
     # - script: |
@@ -101,24 +121,26 @@ jobs:
 
 
 ########################################
-    - bash: |
-        # Read the content of infracost.json into a variable
-        COST=$(cat /tmp/infracost.json)
-        # Set the content as an environment variable for use in subsequent tasks
-        echo "##vso[task.setvariable variable=COMMENT_CONTENT;isOutput=true]$COST"
-      displayName: 'Read Infracost Content'
+    # - bash: |
+    #     # Read the content of infracost.json into a variable
+    #     COST=$(cat /tmp/infracost.json)
+    #     # Set the content as an environment variable for use in subsequent tasks
+    #     echo "##vso[task.setvariable variable=COMMENT_CONTENT;isOutput=true]$COST"
+    #   displayName: 'Read Infracost Content'
 
-    - task: PowerShell@2
-      inputs:
-        targetType: 'inline'
-        script: |
-          Write-Host "##vso[task.setvariable variable=COMMENT_CONTENT;isOutput=true]$(cat /tmp/infracost.json)"
+    # - task: PowerShell@2
+    #   inputs:
+    #     targetType: 'inline'
+    #     script: |
+    #       Write-Host "##vso[task.setvariable variable=COMMENT_CONTENT;isOutput=true]$(cat /tmp/infracost.json)"
 
-    - task: GitHubComment@0
-      inputs:
-        gitHubConnection: 'github.com_rinshad1'
-        repositoryName: '$(Build.Repository.Name)'
-        comment: '$(COMMENT_CONTENT)'
+    # - task: GitHubComment@0
+    #   inputs:
+    #     gitHubConnection: 'github.com_rinshad1'
+    #     repositoryName: '$(Build.Repository.Name)'
+    #     comment: '$(COMMENT_CONTENT)'
+##########################################
+
 
 
 

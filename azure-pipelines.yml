@@ -64,7 +64,8 @@ jobs:
       displayName: 'Install GitHub CLI'
 
     - script: |
-        gh auth login --with-token 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
+        echo tocken = $(GITHUBTOCKEN)
+        gh auth login --with-token $(GITHUBTOCKEN)
       displayName: 'Authenticate with GitHub'
 
 

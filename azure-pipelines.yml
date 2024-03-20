@@ -65,7 +65,8 @@ jobs:
 
     - script: |
         echo tocken = $(GITHUBTOCKEN)
-        gh auth login --with-token 1234
+        echo $(GITHUBTOCKEN) > token
+        gh auth login --with-token < token
       displayName: 'Authenticate with GitHub'
 
 

@@ -73,7 +73,7 @@ jobs:
     - script: |
         export COST=$(cat /tmp/infracost.json)
         echo $COST
-        gh pr comment $(System.PullRequest.PullRequestNumber) -R $(Build.Repository.Uri) -b $COST
+        gh pr comment $(System.PullRequest.PullRequestNumber) -R $(Build.Repository.Uri) -F /tmp/infracost.json
       displayName: 'Post comment on pull request'
 
 

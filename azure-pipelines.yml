@@ -67,6 +67,7 @@ jobs:
         gh auth login --with-token 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
       displayName: 'Authenticate with GitHub'
 
+
     - script: |
         gh pr comment $(System.PullRequest.PullRequestNumber) -R $(Build.Repository.Uri) -b "Your 2nd comment here"
       displayName: 'Post comment on pull request'
